@@ -5,3 +5,4 @@ node_modules/
 
 PROJECT_MEMORY.md
 .openai/
+.netlify/
