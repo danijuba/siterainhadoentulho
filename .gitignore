@@ -1,0 +1,7 @@
+.sites-runtime/
+node_modules/
+.env*
+!.env.example
+
+PROJECT_MEMORY.md
+.openai/
