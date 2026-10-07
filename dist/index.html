@@ -5,9 +5,21 @@
 <title>Rainha do Entulho — Locação de caçambas em Uruaçu</title>
 <meta name="description" content="Locação de caçambas de 5 m³ em todos os bairros de Uruaçu. Prazo de até 7 dias por caçamba, com entrega e retirada incluídas. Peça seu orçamento pelo WhatsApp.">
 <meta name="theme-color" content="#141414">
+<link rel="canonical" href="https://rainhadoentulho.com.br/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rainhadoentulho.com.br/">
+<meta property="og:locale" content="pt_BR">
 <meta property="og:title" content="Rainha do Entulho — Caçambas em Uruaçu">
 <meta property="og:description" content="Caçamba de 5 m³ com entrega e retirada incluídas. Orçamento rápido pelo WhatsApp.">
-<meta property="og:image" content="assets/caminhao-cacambas-uruacu.jpeg">
+<meta property="og:image" content="https://rainhadoentulho.com.br/assets/caminhao-cacambas-uruacu.jpeg">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6K3JZ96T5Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-6K3JZ96T5Y');
+</script>
 <link rel="icon" type="image/png" href="assets/logo-rainha-do-entulho-cabecalho.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
@@ -20,7 +32,9 @@
   "name": "Rainha do Entulho",
   "description": "Locação de caçambas de 5 m³ em Uruaçu, GO. Entrega e retirada incluídas.",
   "telephone": "+55 62 98232-2955",
-  "image": "assets/caminhao-cacambas-uruacu.jpeg",
+  "url": "https://rainhadoentulho.com.br/",
+  "image": "https://rainhadoentulho.com.br/assets/caminhao-cacambas-uruacu.jpeg",
+  "logo": "https://rainhadoentulho.com.br/assets/logo-rainha-do-entulho-transparente.png",
   "areaServed": { "@type": "City", "name": "Uruaçu" },
   "address": { "@type": "PostalAddress", "streetAddress": "Rua Ipê, Qd. 04, Lt. 01, Vila Xique-Xique", "postalCode": "76400-000", "addressLocality": "Uruaçu", "addressRegion": "GO", "addressCountry": "BR" }
 }
@@ -480,7 +494,15 @@ footer{background:var(--ink);color:rgba(255,255,255,.6);font-size:15px}
     var end=form.endereco.value.trim(), data=form.data.value;
     var dataBR=data?data.split('-').reverse().join('/'):'a combinar';
     var msg='Olá! Gostaria de um orçamento para uma caçamba de 5 m³.\n\n📍 Endereço: '+end+'\n📅 Data: '+dataBR;
+    if(window.gtag) gtag('event','generate_lead',{method:'whatsapp',cta_text:'Formulário orçamento rápido'});
     window.open('https://wa.me/5562982322955?text='+encodeURIComponent(msg),'_blank','noopener');
+  });
+
+  document.addEventListener('click',function(ev){
+    var a=ev.target.closest&&ev.target.closest('a[href]'); if(!a||!window.gtag) return;
+    var h=a.getAttribute('href'), txt=(a.textContent||a.getAttribute('aria-label')||'').trim();
+    if(h.indexOf('https://wa.me/')===0) gtag('event','generate_lead',{method:'whatsapp',cta_text:txt});
+    else if(h.indexOf('tel:')===0) gtag('event','click_telefone',{cta_text:txt});
   });
 })();
 </script>
